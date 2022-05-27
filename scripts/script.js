@@ -1,6 +1,20 @@
+import { url } from "./constants/api.js";
+
 const containerElement = document.querySelector("main__section-container")
 
-//Make an api call
-async function apiCall(url) {}
+async function apiCall(url) {
 
-apiCall();
+  try {
+    const response = await fetch(url);
+    const apiResult = await response.json();
+
+    console.log(apiResult);
+  }
+
+  catch(error) {
+    console.log(error);
+  }
+
+}
+
+apiCall(url);
