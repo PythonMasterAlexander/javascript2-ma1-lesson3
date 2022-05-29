@@ -1,9 +1,10 @@
 import { url } from "./constants/api.js";
 
-const containerElement = document.querySelector("main__section-container")
+import { inputElement, containerElement } from "./constants/constants.js"
+
+
 
 async function apiCall(url) {
-
   try {
     const response = await fetch(url);
     const apiResult = await response.json();
