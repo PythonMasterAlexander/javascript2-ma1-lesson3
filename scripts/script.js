@@ -1,12 +1,10 @@
 import { url } from "./constants/api.js";
-import { inputElement } from "./constants/constants.js";
+import { inputElement, containerElement } from "./constants/constants.js";
 
 async function apiCall(url) {
   try {
     const response = await fetch(url);
     const apiResult = await response.json();
-
-    console.log(apiResult);
 
     for(let i = 0; i < apiResult.length; i++) {
 
@@ -20,12 +18,16 @@ async function apiCall(url) {
       const published = apiResult[i].published;
       const publisher = apiResult[i].publisher;
 
-      console.log(publisher);
-
-      if(i >= 10) {
-        break;
-      }
-
+      let displayItemsHtml = `
+      <div class="main__api-content-container">
+        <h1>${title}</h1>
+        <h2>${author}</h2>
+        <p>Published: ${published}</p>
+        <p>Publisher: ${publisher}</p>
+      </div>
+      `;
+      
+      containerElement.innerHTML += displayItemsHtml;
     }
   }
 
